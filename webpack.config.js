@@ -3,7 +3,7 @@ var path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-    entry: './src/app.js',
+    entry: './src/app.jsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'app.bundle.js'
@@ -23,6 +23,11 @@ module.exports = {
                     fallbackLoader: 'style-loader',
                     use: ['css-loader', 'sass-loader']
                 })
+            },
+            {
+                test: /\.jsx$/,
+                exclude: '/node_modules/',
+                use: 'babel-loader'
             }
         ]
     },
